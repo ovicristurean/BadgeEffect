@@ -1,3 +1,4 @@
+include ':badge_effect'
 include ':app_core'
 include ':app_commons'
 include ':app'

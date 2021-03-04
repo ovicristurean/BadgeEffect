@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app_commons" />
             <option value="$PROJECT_DIR$/app_core" />
+            <option value="$PROJECT_DIR$/badge_effect" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
