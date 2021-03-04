@@ -1,2 +1,4 @@
+include ':app_core'
+include ':app_commons'
 include ':app'
 rootProject.name = "BadgeEffect"
