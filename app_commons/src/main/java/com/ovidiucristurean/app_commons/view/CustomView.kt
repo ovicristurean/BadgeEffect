@@ -13,7 +13,7 @@ import androidx.databinding.ViewDataBinding
 import com.ovidiucristurean.app_commons.LayoutView
 import com.ovidiucristurean.app_core.CoreApp
 
-abstract class CustomView<DataBinding:ViewDataBinding>:FrameLayout, LayoutView {
+abstract class CustomView<DataBinding : ViewDataBinding> : FrameLayout, LayoutView {
 
     lateinit var mBinding: DataBinding
 
@@ -28,11 +28,20 @@ abstract class CustomView<DataBinding:ViewDataBinding>:FrameLayout, LayoutView {
         inflateView(context)
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         inflateView(context)
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int
+    ) : super(context, attrs, defStyleAttr, defStyleRes) {
         inflateView(context)
     }
 
@@ -51,7 +60,15 @@ abstract class CustomView<DataBinding:ViewDataBinding>:FrameLayout, LayoutView {
         if (styleId != 0) {
             // Because Calligraphy font path doesn't work with custom views
             // We must extract the path from style item, get it from assets and manually set it
-            val typedArray = context.obtainStyledAttributes(styleId, intArrayOf(android.R.attr.paddingTop, android.R.attr.paddingBottom, android.R.attr.paddingStart, android.R.attr.paddingEnd))
+            val typedArray = context.obtainStyledAttributes(
+                styleId,
+                intArrayOf(
+                    android.R.attr.paddingTop,
+                    android.R.attr.paddingBottom,
+                    android.R.attr.paddingStart,
+                    android.R.attr.paddingEnd
+                )
+            )
             val fontPath = typedArray.getString(0)
             if (useCustomPadding) {
                 setCustomPadding(view)
@@ -62,7 +79,8 @@ abstract class CustomView<DataBinding:ViewDataBinding>:FrameLayout, LayoutView {
     }
 
     private fun inflateView(context: Context) {
-        mBinding = DataBindingUtil.inflate(LayoutInflater.from(context), getLayoutResId(), this, false)
+        mBinding =
+            DataBindingUtil.inflate(LayoutInflater.from(context), getLayoutResId(), this, false)
         addView(rootView)
         onViewCreated()
     }
@@ -72,6 +90,11 @@ abstract class CustomView<DataBinding:ViewDataBinding>:FrameLayout, LayoutView {
         val valueInfoPaddingBottom = view.paddingBottom.px
         val valueInfoPaddingStart = view.paddingStart.px
         val valueInfoPaddingEnd = view.paddingEnd.px
-        view.setPadding(valueInfoPaddingStart, valueInfoPaddingTop, valueInfoPaddingEnd, valueInfoPaddingBottom)
+        view.setPadding(
+            valueInfoPaddingStart,
+            valueInfoPaddingTop,
+            valueInfoPaddingEnd,
+            valueInfoPaddingBottom
+        )
     }
 }
